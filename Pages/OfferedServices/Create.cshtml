@@ -1,0 +1,48 @@
+﻿@page
+@model EventPlanner.Pages.OfferedServices.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>OfferedService</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OfferedService.Name" class="control-label"></label>
+                <input asp-for="OfferedService.Name" class="form-control" />
+                <span asp-validation-for="OfferedService.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfferedService.Description" class="control-label"></label>
+                <input asp-for="OfferedService.Description" class="form-control" />
+                <span asp-validation-for="OfferedService.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfferedService.Rate" class="control-label"></label>
+                <input asp-for="OfferedService.Rate" class="form-control" />
+                <span asp-validation-for="OfferedService.Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="btn">
+                    <i class="fa-regular fa-floppy-disk fa-lg" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">
+        <i class="fa-solid fa-arrow-left fa-lg" aria-hidden="true"></i>Back To List
+    </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

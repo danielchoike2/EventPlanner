@@ -1,0 +1,76 @@
+﻿@page "{searchString?}"
+@model EventPlanner.Pages.OfferedServices.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Services</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <p>
+        Service Name: <input type="text" asp-for="SearchString" />
+        <button class="btn">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+   @*  <a asp-page="./Index" asp-route-sortOrder="desc">
+           
+            Sort by Name (descending)
+        </a>
+        <a asp-page="./Index" asp-route-sortOrder="asc">
+
+            Sort by Name (ascending)
+        </a> *@
+        
+    </p>
+</form>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                @Html.DisplayNameFor(model => model.OfferedService[0].Name)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfferedService[0].Description)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RateSort">
+                @Html.DisplayNameFor(model => model.OfferedService[0].Rate)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OfferedService) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="fa-regular fa-pen-to-square fa-lg">
+                    </a>
+
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="fa-solid fa-circle-info fa-lg">
+                    </a>
+
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="fa-regular fa-trash-can fa-lg">
+                    </a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

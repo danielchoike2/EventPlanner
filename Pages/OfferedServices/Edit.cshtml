@@ -1,0 +1,49 @@
+﻿@page
+@model EventPlanner.Pages.OfferedServices.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OfferedService</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OfferedService.ID" />
+            <div class="form-group">
+                <label asp-for="OfferedService.Name" class="control-label"></label>
+                <input asp-for="OfferedService.Name" class="form-control" />
+                <span asp-validation-for="OfferedService.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfferedService.Description" class="control-label"></label>
+                <input asp-for="OfferedService.Description" class="form-control" />
+                <span asp-validation-for="OfferedService.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfferedService.Rate" class="control-label"></label>
+                <input asp-for="OfferedService.Rate" class="form-control" />
+                <span asp-validation-for="OfferedService.Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn">
+                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">
+        <i class="fa-solid fa-arrow-left fa-lg" aria-hidden="true"></i>Back To List
+    </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

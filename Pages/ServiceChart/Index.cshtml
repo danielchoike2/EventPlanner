@@ -1,0 +1,32 @@
+﻿@page
+@model EventPlanner.Pages.ServiceChart.IndexModel
+@{
+}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script>
+    google.charts.load('current', { 'packages': ['corechart'] });
+</script>
+
+<div id="container" style="width: 1000px; height: 600px; margin: 0 auto"></div>
+
+<script>
+    function drawChart() {
+        // Define the chart to be drawn.
+        var data = google.visualization.arrayToDataTable([
+            ['Service', 'Scheduled Events',],
+            ['DJ', 96],
+            ['Photography', 55],
+            ['Videography', 50],
+            ['Guest Speaker', 45],
+            ['String Quartet', 60],
+            ['Mariachi Band', 100],
+            ['Wedding Officiant', 50]
+        ]);
+        var options = { title: '2023 Events' };
+        // Instantiate and draw the chart.
+        var chart = new google.visualization.ColumnChart(document.getElementById('container'));
+        chart.draw(data, options);
+    }
+    google.charts.setOnLoadCallback(drawChart);
+</script>

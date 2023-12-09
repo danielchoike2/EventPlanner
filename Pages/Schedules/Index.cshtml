@@ -1,0 +1,98 @@
+﻿@page
+@model EventPlanner.Pages.Schedules.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+
+<h1>Events Schedule</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <button class="btn">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+
+        @*  <a asp-page="./Index" asp-route-sortOrder="desc">
+
+            Sort by Date (descending)
+        </a>
+        <a asp-page="./Index" asp-route-sortOrder="asc">
+
+            Sort by Date (ascending)
+        </a> *@
+    </p>
+</form>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule[0].ScheduleDate)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LocationSort">
+                @Html.DisplayNameFor(model => model.Schedule[0].Location)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                @Html.DisplayNameFor(model => model.Schedule[0].ServiceName)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule[0].Rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule[0].Start)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule[0].End)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Schedule) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleDate)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="fa-regular fa-pen-to-square fa-lg">
+                    </a>
+
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="fa-solid fa-circle-info fa-lg">
+                    </a>
+
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="fa-regular fa-trash-can fa-lg">
+                    </a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
